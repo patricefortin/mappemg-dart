@@ -4,7 +4,7 @@ This repository provides a standalone mobile application that implements the ful
 
 This standalone app does the processing, mapping, distribution and presentation of the EMG signal acquired from a bluetooth enabled [BITalino](https://www.pluxbiosignals.com/collections/bitalino) device.
 
-The app has been developped as a biomedical engineering intership project for the [S2M Laboratory of Simulation and Movement Modelling](https://www.facebook.com/s2mlab/), at the Université de Montréal.
+The app has been developped by [Patrice Fortin](https://github.com/patricefortin) as a biomedical engineering intership project for the [S2M Laboratory of Simulation and Movement Modelling](https://www.facebook.com/s2mlab/), at the Université de Montréal.
 
 ![Sensors screen preview](assets/readme/sensors.gif)
 
