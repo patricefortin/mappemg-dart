@@ -22,11 +22,11 @@ class AppColor {
       r = int.parse(strValue.substring(0, 2), radix: 16);
       g = int.parse(strValue.substring(2, 4), radix: 16);
       b = int.parse(strValue.substring(4, 6), radix: 16);
-    } on RangeError catch (e) {
+    } on RangeError {
       r = 0;
       g = 0;
       b = 0;
-    } on FormatException catch (e) {
+    } on FormatException {
       r = max ~/ 2;
       g = max ~/ 2;
       b = max ~/ 2;

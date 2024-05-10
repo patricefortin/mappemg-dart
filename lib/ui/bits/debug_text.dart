@@ -9,7 +9,6 @@ class DebugText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScopedModelDescendant<CoreModel>(
-        builder: (context, child, model) => Text(model.message,
-            style: Theme.of(context).textTheme.headlineLarge));
+        builder: (context, child, model) => Text(model.message));
   }
 }

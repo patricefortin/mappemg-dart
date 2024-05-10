@@ -163,7 +163,7 @@ class SensorPlots extends StatelessWidget {
             ? [
                 // Spectrum
                 const Row(children: [Text('Spectrum raw (1s)')]),
-                Container(
+                SizedBox(
                   height: computedChartsTotalHeight,
                   child: model.channelSeries.rawSpectrums.length > 1
                       ? Chart<List<double>>(
@@ -185,7 +185,7 @@ class SensorPlots extends StatelessWidget {
                       : null,
                 ),
                 const Row(children: [Text('Spectrum filtered (1s)')]),
-                Container(
+                SizedBox(
                   height: computedChartsTotalHeight,
                   child: model.channelSeries.filteredSpectrums.length > 1
                       ? Chart<List<double>>(

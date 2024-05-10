@@ -14,7 +14,13 @@ class SensorBitalinoBluetoothModel extends SensorModel {
   String get address => _address;
 
   @override
+  set address(value) {
+    _address = value;
+  }
+
+  @override
   Future<void> initPlatformState(String address) async {
+    savePrefsLastAddress(address);
     // Create a new one for now, for debugging purpose
     controller = BITalinoController(address, CommunicationType.BTH);
     _address = address;

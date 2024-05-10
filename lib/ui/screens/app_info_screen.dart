@@ -31,10 +31,6 @@ class AppInfoScreen extends StatelessWidget {
                           child: Text(controller.actuatorState.toString())),
                     ]),
                     TableRow(children: [
-                      const TableCell(child: Text('phone state: ')),
-                      TableCell(child: Text(controller.phoneState.toString())),
-                    ]),
-                    TableRow(children: [
                       const TableCell(child: Text('phone address: ')),
                       TableCell(child: Text(model.networkAddress)),
                     ]),

@@ -15,6 +15,16 @@ class SensorControls extends StatelessWidget {
     TextEditingController addressTextController = TextEditingController(
         text: ScopedModel.of<SensorModel>(context).address);
 
+    // In order to display the saved address on load, we need to listen to changes on sensorModel.address
+    // because the key-value is loaded async and instanciation of this SensorControls widget happen before
+    ScopedModel.of<SensorModel>(context).addListener(() {
+      try {
+        addressTextController.text = ScopedModel.of<SensorModel>(context).address;
+      } catch (e) {
+        // ignore
+      }
+    });
+
     return ScopedModelDescendant<SensorModel>(
         builder: (context, child, model) => Column(
               children: <Widget>[

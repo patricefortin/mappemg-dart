@@ -30,7 +30,7 @@ class TimeSeries<T> {
       _timeSeriesItems.removeAt(0);
     }
 
-    int removeBefore = DateTime.now().millisecondsSinceEpoch - maxElapsedMs!;
+    int removeBefore = DateTime.now().millisecondsSinceEpoch - maxElapsedMs;
 
     while (_timeSeriesItems.isNotEmpty &&
         _timeSeriesItems.first.time.millisecondsSinceEpoch < removeBefore) {

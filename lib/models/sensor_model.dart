@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bitalino/bitalino.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../configuration.dart';
 import '../constants.dart';
@@ -91,8 +92,9 @@ abstract class SensorModel extends Model implements IWithWindowStep {
     channelSeries.channelsOfInterest = _channelsRecording;
   }
 
-  // override this method
+  // override these methods
   String get address;
+  set address(value);
 
   Future<void> initPlatformState(String address);
   String get status;
@@ -273,5 +275,22 @@ abstract class SensorModel extends Model implements IWithWindowStep {
   void incrementBandPassOrder() {
     int inc = 1;
     channelSeries.bpOrder = channelSeries.bpOrder + inc;
+  }
+
+  void loadPrefsLastAddress() async {
+    getLogger().i('Loading last sensor address from preferences');
+    final prefs = await SharedPreferences.getInstance();
+    final storedSensorAddress = prefs.getString(kPrefsKeySensorAddress);
+    if (storedSensorAddress != null) {
+      getLogger().i('Found address: $storedSensorAddress');
+      address = storedSensorAddress;
+      notifyListeners();
+    }
+  }
+
+  void savePrefsLastAddress(String address) async {
+    getLogger().i('Saving last sensor address "$address" to preferences');
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(kPrefsKeySensorAddress, address);
   }
 }

@@ -5,6 +5,7 @@ import 'package:uuid/uuid.dart';
 import '../constants.dart';
 import '../interfaces/i_broadcaster.dart';
 import '../mapping/color_mapper.dart';
+import '../types/common.dart';
 import '../types/in_out_map.dart';
 import '../types/time_series.dart';
 import '../types/time_series_types.dart';
@@ -16,6 +17,7 @@ class CoreModel extends Model {
   int _currentScreenIndex = kDefaultScreenIndex;
   String _networkAddress = 'not-set-yet';
   AppColor? _lastAppColorReceived;
+  Notify? uiNotify;
 
   String _message = '';
   TimeSeries<double> vibrationTimeSeries = TimeSeries();
@@ -36,6 +38,9 @@ class CoreModel extends Model {
   void toggleFullMode() {
     isFullMode = !isFullMode;
     notifyListeners();
+    if (isFullMode == false) {
+      uiNotify!("Kiosk Mode enabled. Tap to exit.");
+    }
   }
 
   int get currentScreenIndex => _currentScreenIndex;

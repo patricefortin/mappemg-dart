@@ -3,6 +3,7 @@ import 'package:scoped_model/scoped_model.dart';
 
 import '../constants.dart';
 import '../models/core_model.dart';
+import '../models/sensor_model.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -45,7 +46,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.broadcast_on_home),
+            leading: const Icon(Icons.hub),
             title: const Text(kScreenIndexMdnsMeshLabel),
             onTap: () {
               ScopedModel.of<CoreModel>(context).selectScreenMdnsMesh();
@@ -61,6 +62,14 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
+            leading: const Icon(Icons.view_list),
+            title: const Text(kScreenIndexAppInfoLabel),
+            onTap: () {
+              ScopedModel.of<CoreModel>(context).selectScreenAppInfo();
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
             leading: const Icon(Icons.settings),
             title: const Text(kScreenIndexSettingsLabel),
             onTap: () {
@@ -69,10 +78,10 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.info),
-            title: const Text(kScreenIndexAppInfoLabel),
+            leading: const Icon(Icons.star_rounded),
+            title: const Text(kScreenKioskModeLabel),
             onTap: () {
-              ScopedModel.of<CoreModel>(context).selectScreenAppInfo();
+              ScopedModel.of<CoreModel>(context).toggleFullMode();
               Navigator.pop(context);
             },
           ),

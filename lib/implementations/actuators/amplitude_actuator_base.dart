@@ -4,7 +4,6 @@ import '../../configuration.dart';
 import '../../constants.dart';
 import '../../interfaces/i_amplitude_actuator.dart';
 import '../../interfaces/i_with_window_step.dart';
-import '../../types/time_series_types.dart';
 
 abstract class AmplitudeActuatorBase extends Model
     implements IAmplitudeActuator, IWithWindowStep {

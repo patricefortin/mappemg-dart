@@ -4,7 +4,6 @@ import 'package:scoped_model/scoped_model.dart';
 import '../constants.dart';
 import '../interfaces/i_amplitude_actuator.dart';
 import '../mapping/color_mapper.dart';
-import '../types/time_series_types.dart';
 
 // Control the display color. The amplitude can control the "brightness" of the color
 class DisplayActuatorModel extends Model implements IAmplitudeActuator {

@@ -11,10 +11,16 @@ class SensorReplayFileModel extends SensorModel {
   bool isReplaying = false;
   File? file;
 
-  String _filepath = 'debug-stream-out.txt';
+  String _filepath = kSensorDefaultReplayFile;
 
   @override
   String get address => _filepath;
+
+  @override
+  set address(value) {
+    _filepath = value;
+  }
+
   @override
   String get status {
     if (isCalibrating) {
@@ -29,7 +35,7 @@ class SensorReplayFileModel extends SensorModel {
     if (isInitialized) {
       return 'replay initialized';
     }
-    return 'unitialized';
+    return 'uninitialized';
   }
 
   @override
@@ -49,6 +55,7 @@ class SensorReplayFileModel extends SensorModel {
 
   @override
   Future<void> initPlatformState(String address) async {
+    savePrefsLastAddress(address);
     isInitialized = true;
     _filepath = address;
     notifyListenersAndUI('initialized');
@@ -148,4 +155,5 @@ class SensorReplayFileModel extends SensorModel {
     isReplaying = false;
     notifyListenersAndUI('stop replay');
   }
+  
 }

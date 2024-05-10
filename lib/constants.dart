@@ -1,13 +1,17 @@
 import 'package:logger/logger.dart';
 
 const String kAppName = 'MappEMG';
-const String kVersion = '0.1.0';
+const String kVersion = '1.0.0';
 
 const String kDefaultRemoteAddress = '127.0.0.1';
 const bool kDefaultFullModeEnabled = true;
 
 // Set to Level.verbose to have a lot of info in the logs
 const Level kLogLevel = Level.info;
+
+// SharedPreferences keys
+// On Linux, these preferences are stored in ~/.local/share/ca.umontreal.s2mlab.mappemg/shared_preferences.json
+const String kPrefsKeySensorAddress = 'sensorAddress';
 
 /*
  * Display options
@@ -25,9 +29,10 @@ const int kDefaultScreenIndex = kScreenIndexSensor;
 // Labels for menu
 const String kScreenIndexSensorLabel = 'Sensors';
 const String kScreenIndexVibrationLabel = 'Vibration';
-const String kScreenIndexMdnsMeshLabel = 'Mesh (mDNS)';
+const String kScreenIndexMdnsMeshLabel = 'Network (mDNS)';
 const String kScreenIndexMappingLabel = 'Mappings';
-const String kScreenIndexAppInfoLabel = 'App State Info';
+const String kScreenIndexAppInfoLabel = 'App State';
+const String kScreenKioskModeLabel = 'Kiosk Mode (color)';
 const String kScreenIndexSettingsLabel = 'Settings';
 
 // How long to keep data for display
@@ -97,6 +102,7 @@ const int kMdnsMeshDiscoverIntervalSeconds = 5;
 
 // Sensor
 const String kSensorBitalinoDefaultAddress = '00:21:06:BE:16:49';
+const String kSensorDefaultReplayFile = 'debug-stream-out.txt';
 
 const int kSensorCalibrationDurationSeconds = 10;
 const int kSensorOffsetRawForZero = -512;

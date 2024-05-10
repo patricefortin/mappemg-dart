@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:screen_brightness/screen_brightness.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'configuration.dart';
 import 'constants.dart';
@@ -33,8 +34,6 @@ import 'ui/screens/app_info_screen.dart';
 import 'ui/screens/mdns_mesh_screen.dart';
 import 'ui/screens/settings_screen.dart';
 import 'ui/screens/vibration_screen.dart';
-
-const IconData toggleFullModeIcon = Icons.star_rounded;
 
 CoreModel coreModel = CoreModel();
 
@@ -226,6 +225,7 @@ class HapptiksState extends State<HapptiksStatefulWidget>
     }
 
     // Register a way to display UI notifications
+    coreModel.uiNotify = uiNotify;
     sensorModel.uiNotify = uiNotify;
 
     // Assemble the screens in an list
@@ -264,23 +264,25 @@ class HapptiksState extends State<HapptiksStatefulWidget>
 
           // Fullscreen background color display
           Expanded(
-              child: ColoredBox(
-                  // alignment: Alignment.bottomRight,
-                  color: _localColor,
-                  child: Column(children: [
-                    const Spacer(),
-                    Row(children: [
-                      const Spacer(),
-                      IconButton(
-                        // color: _localStateFullMode ? null : model.color,
-                        color: null,
-                        // Debug button
-                        icon: const Icon(toggleFullModeIcon),
-                        onPressed:
-                            ScopedModel.of<CoreModel>(context).toggleFullMode,
-                      ),
-                    ])
-                  ])))
+              child: InkWell(
+                  onTap: _localStateFullMode ? null : ScopedModel.of<CoreModel>(context).toggleFullMode,
+                  child: ColoredBox(
+                      // alignment: Alignment.bottomRight,
+                      color: _localColor,
+                      child: const Column(children: [
+                        Spacer(),
+                        Row(children: [
+                          Spacer(),
+                          // IconButton(
+                          //   // color: _localStateFullMode ? null : model.color,
+                          //   color: null,
+                          //   // Debug button
+                          //   icon: const Icon(toggleFullModeIcon),
+                          //   onPressed: ScopedModel.of<CoreModel>(context)
+                          //       .toggleFullMode,
+                          // ),
+                        ])
+                      ]))))
         ],
       ),
     );
@@ -288,7 +290,8 @@ class HapptiksState extends State<HapptiksStatefulWidget>
 
   @override
   Future<void> init() async {
-    // Nothing to do
+    getLogger().i('Loading saved preferences');
+    sensorModel.loadPrefsLastAddress();
   }
 
   //receiving and sending back a custom message
