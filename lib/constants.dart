@@ -1,7 +1,7 @@
 import 'package:logger/logger.dart';
 
 const String kAppName = 'MappEMG';
-const String kVersion = '1.0.0+4';
+const String kVersion = '1.0.0+5';
 
 const String kDefaultRemoteAddress = '127.0.0.1';
 const bool kDefaultFullModeEnabled = true;
