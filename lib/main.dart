@@ -265,7 +265,9 @@ class HapptiksState extends State<HapptiksStatefulWidget>
           // Fullscreen background color display
           Expanded(
               child: InkWell(
-                  onTap: _localStateFullMode ? null : ScopedModel.of<CoreModel>(context).toggleFullMode,
+                  onTap: _localStateFullMode
+                      ? null
+                      : ScopedModel.of<CoreModel>(context).toggleFullMode,
                   child: ColoredBox(
                       // alignment: Alignment.bottomRight,
                       color: _localColor,
