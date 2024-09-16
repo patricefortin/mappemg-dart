@@ -38,7 +38,7 @@ packages:
     description:
       path: "."
       ref: "ft/null-safety"
-      resolved-ref: "6dfc83e447a39e964f03c84b832d813b1d572413"
+      resolved-ref: f0ad126f0af5c47d58a87d5b1ffe0f946dc6bce1
       url: "https://github.com/patricefortin/bitalino.git"
     source: git
     version: "2.0.1"
