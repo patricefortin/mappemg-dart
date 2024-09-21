@@ -22,6 +22,8 @@ fi
 
 sed -i "s/^version:.*/version: ${VERSION}/" pubspec.yaml
 
+flutter pub pub run flutter_launcher_icons:main
+
 flutter build apk
 cp build/app/outputs/flutter-apk/app-release.apk $TARGET_APK
 
