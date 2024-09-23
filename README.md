@@ -50,7 +50,7 @@ Here is an overview of the steps to run the MappEMG pipeline application.
 
 ## What is MappEMG
 
-Here is an excerpt of the [original release of MappEMG](https://github.MappEMG):
+Here is an excerpt of the [original release of MappEMG](https://github.com/IDMIL/MappEMG):
 
 > MappEMG allows the audience to experience the performer's muscle effort, an essential component of music performance typically unavailable for direct visual observation. The goal is thus to give the listeners access, through haptic vibrations, to an intimate and non-visible dimension of the musicians' bodily experience.
 
